@@ -1,5 +1,4 @@
 ## Demo video 
-click the burger 
 https://github.com/user-attachments/assets/ac673817-b8a1-4ac2-92b7-e3a8d9fe680b
 
 visit [Demo](https://grab-your-meal-ashen.vercel.app/)
