@@ -9,7 +9,15 @@
 <body class="bg-slate-200 p-2">
 
   <header class="bg-red-600 text-white p-5 rounded-lg mb-4 ml-2 mr-4 shadow">
-    <div class="flex justify-between items-baseline">
+<div class="w-full px-0 py-3 flex justify-between items-center">
+  <a href="https://hackclub.com/">         
+ <img
+      src="https://raw.githubusercontent.com/adityajain407/grab-your-meal/refs/heads/main/flag-orpheus-left.png"
+      alt="hackclub Logo"
+      class="w-40 h-25 transition-transform duration-300 hover:scale-125 hover:rotate-12"
+    ></a>
+   
+       </div> <div class="flex justify-between items-baseline">
       <h1 class="text-3xl font-extrabold tracking-widest">GRUB TIME!</h1>
       <nav class="text-sm underline space-x-3">
          <a href="#">Home</a>
@@ -26,16 +34,81 @@
       <p class="bg-green-200 inline-block px-2 py-1 text-green-800 font-bold">Checked and Read!</p>
     </div>
 
-    <section class="bg-yellow-100 p-8 rounded-sm mb-6 border-b-8 border-yellow-400">
-      <h2 class="text-lg font-serif font-bold mb-4">What I needed to do:</h2>
-      <ul class="list-decimal pl-10 space-y-1 text-sm">
-        <li>Use Tailwind + HTML</li>
-        <li>Make it work on mobile</li>
-        <li>Use containers</li>
-        <li>Add real content</li>
-        <li>Have a Footer and Nav</li>
-      </ul>
-      <p class="mt-5 font-mono bg-white p-1 inline-block border">Status: Complete </p>
+   <section class="bg-yellow-100 p-8 rounded-sm mb-6 border-b-8 border-yellow-400 md:flex items-center justify-start gap-20">
+  
+  <div class="shrink-0"> <h2 class="text-lg font-serif font-bold mb-4">What I needed to do:</h2>
+    <ul class="list-decimal pl-10 space-y-1 text-sm">
+      <li>Use Tailwind + HTML</li>
+      <li>Make it work on mobile</li>
+      <li>Use containers</li>
+      <li>Add real content</li>
+      <li>Have a Footer and Nav</li>
+    </ul>
+    <p class="mt-5 font-mono bg-white p-1 inline-block border">Status: Complete</p>
+  </div>
+
+  <div class="relative mt-8 md:mt-0">
+    <img
+      id="burger"
+      src="https://raw.githubusercontent.com/adityajain407/grab-your-meal/refs/heads/main/buger/buger-0-removebg-preview.png"
+      class="w-48 cursor-pointer"
+      alt="Burger"
+    >
+    <div id="crumbBox" class="absolute top-20 left-1/2"></div>
+  </div>
+
+</section>
+<script>
+  const burgerImages = [
+    "https://raw.githubusercontent.com/adityajain407/grab-your-meal/refs/heads/main/buger/buger-0-removebg-preview.png",
+    "https://raw.githubusercontent.com/adityajain407/grab-your-meal/refs/heads/main/buger/buger-1-removebg-preview.png",
+    "https://raw.githubusercontent.com/adityajain407/grab-your-meal/refs/heads/main/buger/buger-3-removebg-preview.png",
+    "https://raw.githubusercontent.com/adityajain407/grab-your-meal/refs/heads/main/buger/buger-4-removebg-preview.png"
+  ];
+
+  let bite = 0;
+  const burger = document.getElementById("burger");
+  const crumbBox = document.getElementById("crumbBox");
+
+  burger.onclick = () => {
+    bite++;
+
+    // create multiple crumbs (firework effect)
+    for (let i = 0; i < 8; i++) {
+      const crumb = document.createElement("div");
+      crumb.className = "absolute w-2 h-2 bg-yellow-400 rounded-full";
+      crumbBox.appendChild(crumb);
+
+      let x = 0;
+      let y = 0;
+      let xSpeed = (Math.random() - 0.5) * 40;
+      let ySpeed = Math.random() * -30;
+
+      const fall = setInterval(() => {
+        ySpeed += 2;
+        x += xSpeed * 0.05;
+        y += ySpeed * 0.05;
+
+        crumb.style.transform = `translate(${x}px, ${y}px)`;
+      }, 20);
+
+      setTimeout(() => {
+        clearInterval(fall);
+        crumb.remove();
+      }, 700);
+    }
+
+    // change burger image
+    if (bite < burgerImages.length) {
+      burger.src = burgerImages[bite];
+    } else {
+      bite = 0;
+      burger.src = burgerImages[0];
+    }
+  };
+</script>
+
+
     </section>
 
     <div class="px-2">
